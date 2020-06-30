@@ -15,7 +15,7 @@ class Product(models.Model):
     '''Generic model for products, extendable via JSON attributes'''
 
     title = VarCharField(_('title'))
-    slug = models.SlugField(_('slug'))
+    slug = models.SlugField(_('slug'), unique=True)
     attributes = JSONField(_('attributes'), blank=True, null=True)
 
     created = models.DateTimeField(_('created'), auto_now_add=True)
