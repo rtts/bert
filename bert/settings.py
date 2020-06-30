@@ -23,7 +23,8 @@ LOGOUT_REDIRECT_URL = '/'
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    CACHE_MIDDLEWARE_SECONDS = 0
+
+CACHE_MIDDLEWARE_SECONDS = 0 # for now
 
 try:
     with open(KEYFILE) as f:
@@ -73,6 +74,15 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 DATABASES = {
     'default': {
