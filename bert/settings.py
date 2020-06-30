@@ -34,12 +34,14 @@ except IOError:
         f.write(SECRET_KEY)
 
 INSTALLED_APPS = [
+    'inventory',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django_extensions',
+    'rest_framework',
 ]
 if not DEBUG:
     INSTALLED_APPS += ['django.contrib.staticfiles']

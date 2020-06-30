@@ -13,4 +13,6 @@ urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', RedirectView.as_view(url='/accounts/login/')),
     path('logout/', RedirectView.as_view(url='/accounts/logout/')),
+    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('v1/', include('inventory.urls', namespace='inventory')),
 ]
