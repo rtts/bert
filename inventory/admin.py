@@ -1,18 +1,12 @@
 from django.contrib import admin
-from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 
 from .models import Product, Order
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title', 'get_stock']
+    list_display = ['title', 'get_quantity']
     prepopulated_fields = {'slug': ('title',)}
-
-    def get_stock(self, product):
-        q = Order.objects.aggregate(Sum('quantity'))
-        return q['quantity__sum']
-    get_stock.short_description = _('quantity in stock')
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):

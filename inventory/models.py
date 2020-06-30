@@ -24,6 +24,11 @@ class Product(models.Model):
     def __str__(self):
         return str(self.title)
 
+    def get_quantity(self):
+        q = Order.objects.aggregate(models.Sum('quantity'))
+        return q['quantity__sum']
+    get_quantity.short_description = _('quantity in stock')
+
     class Meta:
         ordering = ['title']
         verbose_name = _('product')
