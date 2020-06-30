@@ -15,4 +15,5 @@ urlpatterns += [
     path('logout/', RedirectView.as_view(url='/accounts/logout/')),
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('v1/', include('inventory.urls', namespace='inventory')),
+    path('', RedirectView.as_view(url='https://rtts.eu/')),
 ]
