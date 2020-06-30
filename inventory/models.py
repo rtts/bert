@@ -25,7 +25,7 @@ class Product(models.Model):
         return str(self.title)
 
     def get_quantity(self):
-        q = Order.objects.aggregate(models.Sum('quantity'))
+        q = Order.objects.filter(product=self).aggregate(models.Sum('quantity'))
         return q['quantity__sum']
     get_quantity.short_description = _('quantity in stock')
 
